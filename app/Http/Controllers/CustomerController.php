@@ -50,6 +50,16 @@ class CustomerController extends Controller
         return $customer;
     }
 
+    public function showOneCustomer($id){
+        $showCustomer= Customer::find($id);
+        if($showCustomer){
+            return response()->json($showCustomer->toArray(),200); 
+        }
+        else{
+            return response()->json(['message'=>'book not found'],404);
+        }
+    }
+
     /**
      * Update the specified resource in storage.
      */
